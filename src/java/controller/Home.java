@@ -26,6 +26,7 @@ public class Home extends HttpServlet {
         //lay userName de hien thi(taiKhoan-Home.jsp)
         request.setAttribute("account", new AccountDBContext().getAccountByName("user"));
         
+        //listProduct: lay tt sp theo categoryID(Phan loai)
         //listProduct: lay tt cua sp (Home.jsp)
         if (request.getParameter("categoryID") != null) {
             request.setAttribute("listProduct", new ProductDBContext().getProductByCategoryID(Integer.parseInt(request.getParameter("categoryID"))));

@@ -7,6 +7,7 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,16 +52,15 @@ public class ProductDBContext extends DBContext {
         }
         return pro;
     }
-    
-    
-    public Product getProductByID(int proID){
+
+    public Product getProductByID(int proID) {
         try {
             String sql = "SELECT * FROM [Product] where Product_ID = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, proID);
             ResultSet rs = stm.executeQuery();
-            while (rs.next()) {                
-               Product p = new Product();
+            while (rs.next()) {
+                Product p = new Product();
                 p.setProductID(rs.getInt("Product_ID"));
                 p.setName(rs.getString("Name"));
                 p.setImgUrl(rs.getString("Image_URL"));
@@ -75,8 +75,8 @@ public class ProductDBContext extends DBContext {
         }
         return null;
     }
-    
-      public ArrayList<Product> getProductByCategoryID(int categoryID) {
+
+    public ArrayList<Product> getProductByCategoryID(int categoryID) {
         ArrayList<Product> pro = new ArrayList<>();
 
         try {
@@ -102,8 +102,74 @@ public class ProductDBContext extends DBContext {
         }
         return pro;
     }
-    
+
+    public void updateStock(Product p) {
+        {
+            String sql = "UPDATE [dbo].[Product]\n"
+                    + "   SET [Name] = ?, \n"
+                    + "      [Price] = ?,\n"
+                    + "      [Quantity] = ?\n"
+                    + " WHERE Product_ID = ?";
+            PreparedStatement stm = null;
+            try {
+                stm = connection.prepareStatement(sql);
+                stm.setString(1, p.getName());
+                stm.setInt(2, p.getPrice());
+                stm.setInt(3, p.getQuantity());
+                stm.setInt(4, p.getProductID());
+                stm.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (stm != null) {
+                    try {
+                        stm.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+    }
+
+    public void deleteStock(Product p) {
+        String sql = "DELETE Product\n"
+                + " WHERE [sid] = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, p.getProductID());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(new ProductDBContext().getProductByCategoryID(2));
+       new ProductDBContext().updateStock(new Product(1, "Son BBIA", 123456, 1000));
     }
 }

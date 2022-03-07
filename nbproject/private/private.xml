@@ -4,12 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/web/view/stock/listProductsInStock.jsp</file>
-            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/web/view/Home.jsp</file>
-            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/dal/ProductDBContext.java</file>
             <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/model/Product.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/controller/Product/ViewDetail.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/controller/Product/listControlPoduct.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/controller/Home.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/dal/ProductDBContext.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/web/view/stock/editListProducts.jsp</file>
+            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/controller/Product/EditStock.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/Máy%20tính/QuanLyCuaHangMyPham/src/java/controller/Product/UpdateProduct.java</file>
         </group>
     </open-files>
 </project-private>

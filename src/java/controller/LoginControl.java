@@ -40,6 +40,7 @@ public class LoginControl extends HttpServlet {
         System.out.println(db.checkExits(user, pass));
         if (db.checkExits(user, pass)) {
             request.getSession().setAttribute("account", new AccountDBContext().getAccountByName(user));
+            request.getSession().setMaxInactiveInterval(60*60*10);
             response.sendRedirect("home");
         } else {
             request.setAttribute("ErrorLogin", "Lỗi: Tài khoản hoặc mật khẩu không chính xác!");
