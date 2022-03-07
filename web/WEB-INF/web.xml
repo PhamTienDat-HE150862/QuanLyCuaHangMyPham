@@ -20,6 +20,10 @@
         <servlet-name>LogOut</servlet-name>
         <servlet-class>controller.LogOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listControlPoduct</servlet-name>
+        <servlet-class>controller.Product.listControlPoduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUp</servlet-name>
         <url-pattern>/SignUp</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>LogOut</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listControlPoduct</servlet-name>
+        <url-pattern>/listPoductsController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

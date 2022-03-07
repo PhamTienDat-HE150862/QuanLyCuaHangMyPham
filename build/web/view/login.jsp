@@ -21,7 +21,7 @@
         <div class="container">
             <span class="error animated tada" id="msg"></span>
             <form method="post" name="form1" class="box" onsubmit="return checkStuff()">
-                <h4>Admin <span>Cosmetic</span></h4>
+                <h4>Welcome back!<br/> <span> AnhTuyet Cosmetic</span></h4>
                 <h5>Đăng nhập bằng tài khoản của bạn!</h5>
                 <input type="text" name="username" placeholder="Tên đăng nhập" autocomplete="off">
                 <i class="typcn typcn-eye" id="eye"></i>

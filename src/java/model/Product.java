@@ -19,6 +19,9 @@ public class Product {
     private int categoryID;
     private int quantity;
 
+    public Product() {
+    }
+
     public Product(int productID, String name, String imgUrl, int price, int publisherID, String detail, int categoryID, int quantity) {
         this.productID = productID;
         this.name = name;
@@ -28,9 +31,6 @@ public class Product {
         this.detail = detail;
         this.categoryID = categoryID;
         this.quantity = quantity;
-    }
-
-    public Product() {
     }
 
     public int getProductID() {
@@ -102,5 +102,6 @@ public class Product {
         return "Product{" + "productID=" + productID + ", name=" + name + ", imgUrl=" + imgUrl + ", price=" + price + ", publisherID=" + publisherID + ", detail=" + detail + ", categoryID=" + categoryID + ", quantity=" + quantity + '}';
     }
 
-            
+    
+    
 }

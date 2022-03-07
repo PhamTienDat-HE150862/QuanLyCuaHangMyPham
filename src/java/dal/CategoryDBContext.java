@@ -8,6 +8,7 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.sql.rowset.CachedRowSet;
 import model.Category;
 
 /**
@@ -24,7 +25,7 @@ public class CategoryDBContext extends DBContext {
                     + "  FROM [Category]";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Category c = new Category();
                 c.setCategoryID(rs.getInt("Category_ID"));
                 c.setName(rs.getString("Name"));
@@ -34,7 +35,8 @@ public class CategoryDBContext extends DBContext {
         }
         return cate;
     }
-    
+
+
     public static void main(String[] args) {
         System.out.println(new CategoryDBContext().getCategory());
     }

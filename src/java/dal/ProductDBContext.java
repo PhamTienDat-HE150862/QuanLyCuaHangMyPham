@@ -76,7 +76,34 @@ public class ProductDBContext extends DBContext {
         return null;
     }
     
+      public ArrayList<Product> getProductByCategoryID(int categoryID) {
+        ArrayList<Product> pro = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM [Product] where Category_ID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, categoryID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setProductID(rs.getInt("Product_ID"));
+                p.setName(rs.getString("Name"));
+                p.setImgUrl(rs.getString("Image_URL"));
+                p.setPrice(rs.getInt("Price"));
+                p.setPublisherID(rs.getInt("Publisher_ID"));
+                p.setDetail(rs.getString("Detail"));
+                p.setCategoryID(rs.getInt("Category_ID"));
+                p.setQuantity(rs.getInt("Quantity"));
+                pro.add(p);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+        return pro;
+    }
+    
     public static void main(String[] args) {
-        System.out.println(new ProductDBContext().getProductByID(1));
+        System.out.println(new ProductDBContext().getProductByCategoryID(2));
     }
 }
